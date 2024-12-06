@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro" name="%(ROBOT_NAME)s">
+
+  <!-- Use this if parameters are set from the launch file, otherwise delete -->
+  <xacro:arg name="prefix" default="" />
+
+  <xacro:arg name="use_mock_hardware" default="false" />
+  <xacro:arg name="mock_sensor_commands" default="false" />
+  <xacro:arg name="sim_gazebo_classic" default="false" />
+  <xacro:arg name="sim_gazebo" default="false" />
+  <xacro:arg name="simulation_controllers" default="" />
+
+  <xacro:include filename="$(find %(PACKAGE_NAME)s)/urdf/%(ROBOT_NAME)s/%(ROBOT_NAME)s_macro.xacro"/>
+
+  <!-- create link fixed to the "world" -->
+  <link name="world" />
+
+  <!-- Load robot's macro with parameters -->
+  <!-- set prefix if multiple robots are used -->
+  <xacro:%(ROBOT_NAME)s prefix="$(arg prefix)" parent="world" >
+    <origin xyz="0 0 0" rpy="0 0 0" />          <!-- position robot in the world -->
+  </xacro:%(ROBOT_NAME)s>
+
+</robot>
