@@ -54,6 +54,15 @@ ros2 launch %(PACKAGE_NAME)s view_%(ROBOT_NAME)s.launch.py
 If there are no issues with the description, two windows are opened: `rviz2` and `Joint State Publisher`.
 Rviz2 visualizes the robot's state and Joint state Publisher to changes joint values using sliders or generates random but valid configurations.
 
+Check that : 
+1. a TF is added to the RViz UI (otherwise bottom left button Add > TF)
+2. the `Global Options` of RViz (top left), the Fixed Frame is set to the first frame in the kinematic chain defined in the URDF of the robot.
+3. for the TF UI parameters (left), `Show Names` is checked
+4. A RobotModel is added to the RViz (otherwise bottom left button Add > RobotModel)
+  1. Description Source is `Topic`
+  2. Description Topic is `/robot_description`
+
+
 
 
 ### Credits
